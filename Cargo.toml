@@ -1,0 +1,26 @@
+[workspace]
+members = [
+    "host/service/core",
+    "host/service/transport/tcp",
+    "host/service/transport/rdma",
+    "host/service/accel/sw",
+    "host/service/accel/fpga_stub",
+    "host/ctl/admin_api",
+    "host/ctl/healthcheck",
+    "tools/trace_viewer",
+    "tools/pcap_analyzer",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+license = "MIT"
+authors = ["Azure Storage Offload Team"]
+
+[workspace.dependencies]
+anyhow = "1"
+thiserror = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
