@@ -1,0 +1,13 @@
+[package]
+name = "azure_storage_offload_transport_rdma"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+build = "build.rs"
+
+[dependencies]
+anyhow = { workspace = true }
+tracing = { workspace = true }
+
+[build-dependencies]
+cc = "1"
