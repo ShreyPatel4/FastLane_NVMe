@@ -1,25 +1,10 @@
-//! Core state machines and data structures for Azure Storage Offload.
+//! Core primitives shared across host service components.
 
-use serde::{Deserialize, Serialize};
-use tracing::info;
+pub mod error;
+pub mod metrics;
+pub mod rings;
+pub mod tracing;
+pub mod types;
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct QueueConfig {
-    pub depth: u16,
-    pub io_size_bytes: u32,
-}
-
-impl Default for QueueConfig {
-    fn default() -> Self {
-        Self {
-            depth: 64,
-            io_size_bytes: 4096,
-        }
-    }
-}
-
-pub fn initialize() -> anyhow::Result<()> {
-    let config = QueueConfig::default();
-    info!(?config, "Initializing core service state");
-    Ok(())
-}
+pub use error::{CoreError, CoreResult};
+pub use types::{IoDesc, IoFlags, IoOp};
